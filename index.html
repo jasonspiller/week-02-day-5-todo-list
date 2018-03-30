@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-	<title>Jason Spiller's Todo List</title>
+	<title>Todo List</title>
 
 
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
@@ -16,7 +16,7 @@
 <body>
 
 	<header>
-		<h1>Precision Beauty</h1>
+		<h1>Todo List</h1>
 	</header>
 
 
@@ -24,20 +24,20 @@
 
 		<section>
 
-			<h2>What would you like to build today?</h2>
+			<h2 id="msg">What would you like Todo?</h2>
 
-			<form id="frmPost">
-				<input type="text" name="post" id="postText" class="form-control">
-				<button type="submit" name="btnSubmit">Post</button>
+			<form id="frmTodo">
+				<input type="text" name="todo" id="todo" class="form-control">
+				<button type="submit" name="btnSubmit">Add a Todo</button>
 			</form>
 
 		</section>
 
-		<section id="articleList">
+		<ul id="todoList">
 
-			<article></article>
+			<!-- add todos here -->
 
-		</section>
+		</ul>
 
 	</main>
 
@@ -50,6 +50,7 @@
 
 	</footer>
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="assets/js/main.js"></script>
 
 </body>
