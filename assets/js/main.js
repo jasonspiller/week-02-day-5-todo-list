@@ -1,8 +1,7 @@
 $(function() {
 
 	// prepend todo to page
-	const addTodo  = (str) => {
-		// add the text to it
+	const addTodos  = (str) => {
 		$('#todoList').prepend(
 			$('<li>')
 				.addClass('todo')
@@ -15,13 +14,19 @@ $(function() {
 		if (str !== '') {
 
 			// add to the page
-			addTodo(str);
+			addTodos(str);
 
-			// add to localStorage, add delimiter if todos > 0
+			// create an array to add todos to
+			let arrTodos = [];
+
+			// if there are stored todos get them and add to the array
 			if (localStorage.getItem('todo') !== null) {
-				str = localStorage.getItem('todo') + '|todo|' + str;
+				arrTodos = JSON.parse(localStorage.getItem('todo'));
 			}
-			localStorage.setItem('todo', str);
+
+			// add new todo to the array and store the array
+			arrTodos.push(str);
+			localStorage.setItem('todo', JSON.stringify(arrTodos));
 
 			// reset error message
 			if ($('#msg').hasClass('error')) {
@@ -46,28 +51,22 @@ $(function() {
 		newTodo($('#todo').val());
 	});
 
+	//
 	const populateTodoList = () => {
 
 		// check to make sure there is a list
 		if (localStorage.getItem('todo') !== null) {
 
-			let arrTodos = localStorage.getItem('todo').split('|todo|');
+			console.log('has');
 
-			for(let i=0; i < arrTodos.length; i++) {
-				addTodo(arrTodos[i])
+			// parse local storage to an array
+			let arrStoredTodos = JSON.parse(localStorage.getItem('todo'));
+
+			for(let i=0; i < arrStoredTodos.length; i++) {
+				addTodos(arrStoredTodos[i])
 			}
 		}
 	}
 	populateTodoList();
-
-	let arrTest = ['1', '2', '3'];
-	console.log(arrTest);
-
-	localStorage.setItem('test', JSON.stringify(arrTest));
-
-	let arrTest = JSON.parse(localStorage.getItem('test'));
-	console.log(arrTest);
-
-
 
 });
