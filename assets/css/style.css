@@ -28,6 +28,7 @@ h1, h2, h3 {
 	letter-spacing: .25rem;
 }
 
+
 header, footer {
 	position: fixed;
 	top: 0;
@@ -46,6 +47,7 @@ header h1 {
 	font-size: 3rem;
 	letter-spacing: 1rem;
 }
+
 
 main {
 	box-sizing: border-box;
@@ -122,7 +124,7 @@ button:focus
 	box-sizing: border-box;
 	width: 100%;
 	margin: 1rem 0;
-	padding: 1rem 3rem;
+	padding: 1rem 3rem .7rem;
 	background: rgba(0,0,0,0.5);
 	color: #fff;
 	text-align: center;
@@ -133,9 +135,19 @@ button:focus
 }
 
 .todo-content {
+	height: 28px;
+	width: 100%;
+	margin: -4px 0 0 -2px;
+	border: none;
+	text-align: center;
 }
 
-.checkbox, .delete {
+.disabled {
+	background: rgba(255,255,255,0);
+	color: #fff;
+}
+
+.checkbox, .delete, .save {
 	position: absolute;
 	top: .8rem;
 	left: .5rem;
@@ -144,20 +156,20 @@ button:focus
 	border-radius: .25rem;
 	background: #fff;
 	color: #0EACC2;
-	line-height: 0;
+	text-align: left;
 	cursor: pointer;
 }
 
-.delete {
+.delete, .save {
 	left: auto;
 	right: .5rem;
 }
 
-.checkbox svg, .delete svg {
+.checkbox svg, .delete svg, .save svg {
 	margin-top: -2px;
 }
 
-.completed {
+.done {
 	text-decoration: line-through #7D7D7D;
 }
 
