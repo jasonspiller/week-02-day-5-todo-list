@@ -5,7 +5,16 @@ $(function() {
 		$('#todoList').prepend(
 			$('<li>')
 				.addClass('todo')
-				.html(str)
+				.html(
+					'<div class="checkbox">' +
+					'<i class="far fa-square fa-2x"></i>' +
+					'</div>' +
+					'<input type="text" class="todo-content" value="' + str + '">' +
+					'</span>' +
+					'<div class="delete">' +
+					'<i class="fas fa-window-close fa-2x"></i>' +
+					'</div>'
+			)
 		);
 	}
 
@@ -45,19 +54,11 @@ $(function() {
 		}
 	};
 
-	// add the event listener
-	$('#frmTodo').on('submit', function(e){
-    e.preventDefault();
-		newTodo($('#todo').val());
-	});
-
-	//
+	// add stored todos
 	const populateTodoList = () => {
 
 		// check to make sure there is a list
 		if (localStorage.getItem('todo') !== null) {
-
-			console.log('has');
 
 			// parse local storage to an array
 			let arrStoredTodos = JSON.parse(localStorage.getItem('todo'));
@@ -69,4 +70,41 @@ $(function() {
 	}
 	populateTodoList();
 
+
+	// add the event listeners
+	$('#frmTodo').on('submit', function(e) {
+    e.preventDefault();
+		newTodo($('#todo').val());
+	});
+
+	// completed checkbox
+	$('#todoList').on('click', '.checkbox', function() {
+		// check to see if box is "checked" and toggle accordingly
+		if ($(this).find('svg').hasClass('fa-square')) {
+
+			// toggle icon
+			$(this).empty().append('<i class="far fa-check-square fa-2x"></i>');
+
+			//strikethrough text
+			$(this).next('.todo-content').addClass('completed');
+
+		} else {
+
+			// toggle icon
+			$(this).empty().append('<i class="far fa-square fa-2x"></i>');
+
+			// remove strikethrough
+			$(this).next('.todo-content').removeClass('completed');
+		}
+	})
+
+	// edit todo
+	$('#todoList').on('click', '.todo-content', function() {
+		console.log('edit');
+	})
+
+	// delete todo
+	$('#todoList').on('click', '.delete', function() {
+		$(this).parent().remove();
+	})
 });

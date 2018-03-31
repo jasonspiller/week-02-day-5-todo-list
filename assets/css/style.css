@@ -117,11 +117,12 @@ button:focus
 
 .todo {
 	display: block;
+	position: relative;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	width: 100%;
 	margin: 1rem 0;
-	padding: 1rem;
+	padding: 1rem 3rem;
 	background: rgba(0,0,0,0.5);
 	color: #fff;
 	text-align: center;
@@ -130,6 +131,36 @@ button:focus
 .todo:first-child {
 	margin-top: 3rem;
 }
+
+.todo-content {
+}
+
+.checkbox, .delete {
+	position: absolute;
+	top: .8rem;
+	left: .5rem;
+	z-index: 1;
+	height: 28px;
+	border-radius: .25rem;
+	background: #fff;
+	color: #0EACC2;
+	line-height: 0;
+	cursor: pointer;
+}
+
+.delete {
+	left: auto;
+	right: .5rem;
+}
+
+.checkbox svg, .delete svg {
+	margin-top: -2px;
+}
+
+.completed {
+	text-decoration: line-through #7D7D7D;
+}
+
 
 footer {
 	top: auto;
@@ -142,7 +173,6 @@ footer {
 	margin: -0.05rem 0 0;
 	padding: 0 2rem 2rem;
 	font-size: .85rem;
-	line-height:
 }
 
 .photo-credit {
